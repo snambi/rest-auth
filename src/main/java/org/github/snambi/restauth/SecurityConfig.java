@@ -21,8 +21,12 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        // .csrf().httpBasic are needed for POST requests to work
-        //
+
+        /*  following code is based on,
+         *  https://docs.spring.io/spring-security/reference/servlet/oauth2/resource-server/jwt.html#oauth2resourceserver-jwt-sansboot
+         */
+
+
         http.csrf(AbstractHttpConfigurer::disable);
         http.authorizeHttpRequests(
                 (authzRequests) ->
